@@ -42,7 +42,6 @@ export const constantRoutes = [
     component: () => import('@/views/404'),
     hidden: true
   },
-
   {
     path: '/',
     component: Layout,
@@ -51,115 +50,163 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '主页', icon: 'el-icon-house' }
     }]
   },
-
   {
-    path: '/example',
+    path: '/teacher',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/teacher/take',
+    name: 'Teacher',
+    meta: { title: '教师', icon: 'el-icon-s-custom' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'take',
+        name: 'Take',
+        component: () => import('@/views/teacher/take'),
+        meta: { title: '上课' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
+        path: 'prepare',
+        name: 'Prepare',
+        component: () => import('@/views/teacher/take'),
+        meta: { title: '备课' }
+      },
       {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        path: 'enter',
+        name: 'Enter',
+        component: () => import('@/views/teacher/enter'),
+        meta: { title: '学生成绩录入' }
+      },
+      {
+        path: 'manage-student',
+        name: 'ManageStudent',
+        component: () => import('@/views/teacher/manage-student/index'),
+        meta: { title: '学生信息管理' }
+      },
+      {
+        path: 'data-center',
+        name: 'DataCenter',
+        component: () => import('@/views/teacher/data-center/index'),
+        meta: { title: '数据中心' },
+        children: [
+          {
+            path: 'complete-rate',
+            name: 'CompleteRate',
+            component: () => import('@/views/teacher/data-center/complete-rate'),
+            meta: { title: '达标率统计' }
+          },
+          {
+            path: 'cumulative-complete-rate',
+            name: 'CumulativeCompleteRate',
+            component: () => import('@/views/teacher/data-center/cumulative-complete-rate'),
+            meta: { title: '累计达标率统计' }
+          },
+          {
+            path: 'stu-class-info',
+            name: 'StuClassInfo',
+            component: () => import('@/views/teacher/data-center/stu-class-info'),
+            meta: { title: '学生课程信息' }
+          },
+          {
+            path: 'homework-com-rate',
+            name: 'HomeworkComRate',
+            component: () => import('@/views/teacher/data-center/stu-class-info'),
+            meta: { title: '作业完成率' }
+          }]
+      },
+      {
+        path: 'teacher-info',
+        name: 'TeacherInfo',
+        component: () => import('@/views/teacher/teacher-info'),
+        meta: { title: '信息管理' }
+      },
+      {
+        path: 'teacher-notification',
+        name: 'TeacherNotification',
+        component: () => import('@/views/teacher/teacher-notification'),
+        meta: { title: '消息通知' }
       }
     ]
   },
 
   {
-    path: '/nested',
+    path: '/nursery',
+    name: 'Nursery',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
+    redirect: '/nursery/manage-class',
     meta: {
-      title: 'Nested',
-      icon: 'nested'
+      title: '机构/幼儿园',
+      icon: 'el-icon-school'
     },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'manage-class',
+        name: 'ManageClass',
+        component: () => import('@/views/nursery/manage-class'),
+        meta: { title: '班级管理' }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
-      }
-    ]
+        path: 'manage-teacher',
+        name: 'ManageTeacher',
+        component: () => import('@/views/nursery/manage-teacher'),
+        meta: { title: '教师管理' }
+      },
+      {
+        path: 'nursery-info',
+        name: 'NurseryInfo',
+        component: () => import('@/views/nursery/nursery-info'),
+        meta: { title: '机构信息管理' }
+      },
+      {
+        path: 'nursery-notification',
+        name: 'TeacherNotification',
+        component: () => import('@/views/nursery/nursery-notification'),
+        meta: { title: '消息通知' }
+      }]
   },
 
   {
-    path: 'external-link',
+    path: '/header-quarters',
+    name: 'HeaderQuarters',
     component: Layout,
+    redirect: '/nursery/manage-class',
+    meta: {
+      title: '总部',
+      icon: 'el-icon-s-flag'
+    },
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
-      }
-    ]
+        path: 'expert-advise',
+        name: 'ExpertAdvise',
+        component: () => import('@/views/header-quarters/expert-advise/index'),
+        meta: { title: '专家意见' }
+      },
+      {
+        path: 'header-quarters-info',
+        name: 'HeaderQuartersInfo',
+        component: () => import('@/views/header-quarters/header-quarters-info/index'),
+        meta: { title: '总部平台信息' }
+      },
+      {
+        path: 'manage-course',
+        name: 'ManageCourse',
+        component: () => import('@/views/header-quarters/manage-course/index'),
+        meta: { title: '课程管理' }
+      },
+      {
+        path: 'nursery-info',
+        name: 'NurseryInfo',
+        component: () => import('@/views/header-quarters/nursery-info/index'),
+        meta: { title: '学校管理' }
+      },
+      {
+        path: 'contract',
+        name: 'Contract',
+        component: () => import('@/views/header-quarters/contract'),
+        meta: { title: '合同管理' }
+      }]
   },
-
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
